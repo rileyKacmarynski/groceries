@@ -1,7 +1,7 @@
 {
 	"name": "groceries",
 	"license": "MIT",
-	"private": true,
+	"private": false,
 	"version": "0.0.0",
 	"scripts": {
 		"build": "tsc && vite build",
@@ -15,7 +15,7 @@
 		"test:e2e": "pnpm preview:test 'cypress open'",
 		"test:e2e:headless": "pnpm preview:test 'cypress run'",
 		"test:e2e:dev": "cypress open --config 'baseUrl=http://localhost:3000'",
-		"test:e2e:ci": "vite build && pnpm preview:test 'cypress run --record'",
+		"test:e2e:ci": "vite build && pnpm preview:test 'cypress run'",
 		"format": "prettier -uw --ignore-path .gitignore .",
 		"run-tsc": "tsc",
 		"run-eslint": "eslint --cache --fix --ignore-path .gitignore --ext .ts,.tsx src",

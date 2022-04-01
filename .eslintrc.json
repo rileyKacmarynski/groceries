@@ -18,7 +18,7 @@
 		"airbnb-typescript",
 		"airbnb/hooks",
 		"plugin:react/jsx-runtime",
-		"plugin:unicorn/all",
+		"plugin:unicorn/recommended",
 		"plugin:react-prefer-function-component/recommended",
 		"prettier"
 	],
@@ -55,15 +55,6 @@
 		"@typescript-eslint/prefer-enum-initializers": "off",
 		"@typescript-eslint/prefer-readonly-parameter-types": "off",
 		"@typescript-eslint/prefer-regexp-exec": "off",
-		"@typescript-eslint/no-magic-numbers": [
-			"error",
-			{
-				"ignoreEnums": true,
-				"ignore": [0],
-				"enforceConst": true,
-				"detectObjects": true
-			}
-		],
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/init-declarations": "off",
 		"@typescript-eslint/no-confusing-void-expression": [
@@ -121,15 +112,6 @@
 			}
 		],
 		"react/no-unstable-nested-components": "error",
-		"react/jsx-handler-names": [
-			"error",
-			{
-				"eventHandlerPrefix": "on",
-				"eventHandlerPropPrefix": "on",
-				"checkLocalVariables": true,
-				"checkInlineFunction": true
-			}
-		],
 		"react/jsx-key": "error",
 		"react/jsx-no-bind": [
 			"error",
@@ -154,6 +136,13 @@
 				}
 			}
 		],
+		"semi": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"react/jsx-handler-names": "off",
+		"unicorn/prevent-abbreviations": "off",
+		"unicorn/explicit-length-check": "off",
+		"unicorn/consistent-function-scoping": "off",
+		"react/jsx-props-no-spreading": "off",
 		"unicorn/no-nested-ternary": ["error"]
 	},
 	"settings": {
@@ -182,7 +171,12 @@
 				"testing-library/no-manual-cleanup": "error",
 				"testing-library/prefer-explicit-assert": "error",
 				"testing-library/prefer-user-event": "error",
-				"testing-library/prefer-wait-for": "error"
+				"testing-library/prefer-wait-for": "error",
+				"react/jsx-handler-names": "off",
+				"unicorn/prevent-abbreviations": "off",
+				"unicorn/explicit-length-check": "off",
+				"unicorn/consistent-function-scoping": "off",
+				"react/jsx-props-no-spreading": "off"
 			}
 		}
 	]
