@@ -1,4 +1,5 @@
 import App from 'App'
+import GroceryListProvider from 'components/GroceryList/ListContext'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -20,7 +21,9 @@ const queryClient = new QueryClient({
 ReactDOM.render(
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
-			<App />
+			<GroceryListProvider>
+				<App />
+			</GroceryListProvider>
 		</QueryClientProvider>
 	</StrictMode>,
 	document.querySelector('#root')

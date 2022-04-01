@@ -1,41 +1,51 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/prop-types */
-/* eslint-disable unicorn/no-null */
 import * as React from 'react'
-import type { GroceryItem } from './GroceryList'
 
-interface ListContextInterface {
+export interface GroceryItem {
+	id: number
+	text: string
+}
+export interface GroceryListState {
 	items: GroceryItem[]
-	// eslint-disable-next-line no-unused-vars
-	addGroceryItem: (text: string) => Promise<void>
-	loadGroceryItems: () => Promise<void>
 }
 
-const ListContext = React.createContext<ListContextInterface | null>(null)
+export interface GroceryListStore {
+	list: GroceryListState
+	addItem: (text: string) => Promise<void>
+}
 
-function GroceryListProvider() {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [items, setItems] = React.useState<GroceryItem[]>([])
+const ListContext = React.createContext<GroceryListStore | undefined>(undefined)
 
-	// const addGroceryItem = async (text: string) => {
-	//   const id = items.length + 1
-	//   const newItem = { id, text }
-	//   const newItems = [newItem, ...items]
-	//   await groceryClient.createGroceryItem(newItem)
-	//   setItems(newItems)
-	// }
-	// const loadGroceryItems = async () => {
-	//   const items = await groceryClient.loadGroceryList()
-	//   setItems(items)
-	// }
-	//   const value = {
-	//     items,
-	//     addGroceryItem,
-	//     loadGroceryItems: () => [],
-	//   }
-	return <>yo</>
+const initialState: GroceryListState = {
+	items: [
+		{ id: 1, text: 'bread' },
+		{ id: 2, text: 'milk' }
+	]
+}
 
-	//   return <ListContext.Provider value={value}>{children}</ListContext.Provider>
+const GroceryListProvider: React.FC = ({ children }) => {
+	const [state, setState] = React.useState(initialState)
+
+	const addItem = React.useCallback(
+		async (text: string) => {
+			setState({
+				items: [
+					...state.items,
+					{
+						id: state.items.length + 1,
+						text
+					}
+				]
+			})
+		},
+		[state.items]
+	)
+
+	const value = React.useMemo(
+		() => ({ list: state, addItem }),
+		[state, addItem]
+	)
+
+	return <ListContext.Provider value={value}>{children}</ListContext.Provider>
 }
 
 export const useGroceryList = () => {

@@ -105,12 +105,6 @@
 				"validateNested": true
 			}
 		],
-		"react/function-component-definition": [
-			"error",
-			{
-				"namedComponents": "function-declaration"
-			}
-		],
 		"react/no-unstable-nested-components": "error",
 		"react/jsx-key": "error",
 		"react/jsx-no-bind": [
@@ -143,6 +137,9 @@
 		"unicorn/explicit-length-check": "off",
 		"unicorn/consistent-function-scoping": "off",
 		"react/jsx-props-no-spreading": "off",
+		"no-restricted-imports": "off",
+		"no-restricted-exports": "off",
+		"react/function-component-definition": "off",
 		"unicorn/no-nested-ternary": ["error"]
 	},
 	"settings": {

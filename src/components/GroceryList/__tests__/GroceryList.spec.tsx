@@ -2,12 +2,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { render, screen } from '@testing-library/react'
-import type {
-	GroceryItem,
-	GroceryListProps
-} from 'components/GroceryList/GroceryList'
-import GroceryList from 'components/GroceryList/GroceryList'
 import { describe, expect, it, vi } from 'vitest'
+import type { GroceryListProps } from '../GroceryList'
+import GroceryList from '../GroceryList'
 
 describe('GroceryList', () => {
 	const items = [
@@ -17,18 +14,19 @@ describe('GroceryList', () => {
 
 	// eslint-disable-next-line no-unused-vars
 	// eslint-disable-next-line unicorn/consistent-function-scoping
-	let loadGroceryList = () => {}
+	// let loadGroceryList = () => {}
 
 	const renderWithProps = (propOverrides: Partial<GroceryListProps> = {}) => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const props = {
-			loadGroceryList: vi.fn<[], GroceryItem[]>(() => items),
+		const props: GroceryListProps = {
+			// loadGroceryList: vi.fn<[], GroceryItem[]>(() => items),
+			createGroceryItem: vi.fn<[string], Promise<void>>(async () => {}),
 			groceryItems: items,
 			...propOverrides
 		}
 
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		loadGroceryList = props.loadGroceryList
+		// loadGroceryList = props.loadGroceryList
 
 		render(<GroceryList {...props} />)
 	}

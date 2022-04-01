@@ -14,7 +14,7 @@
 		"test:ci": "vitest run",
 		"test:e2e": "pnpm preview:test 'cypress open'",
 		"test:e2e:headless": "pnpm preview:test 'cypress run'",
-		"test:e2e:dev": "cypress open --config 'baseUrl=http://localhost:3000'",
+		"test:e2e:dev": "cypress open --config 'baseUrl=http://localhost:3001'",
 		"test:e2e:ci": "vite build && pnpm preview:test 'cypress run'",
 		"format": "prettier -uw --ignore-path .gitignore .",
 		"run-tsc": "tsc",

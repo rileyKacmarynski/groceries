@@ -15,10 +15,7 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 		e.preventDefault()
 
 		if (item.length) {
-			console.log('adding item')
 			await addItem(item)
-
-			console.log('item added setting item')
 			setItem('')
 		}
 	}

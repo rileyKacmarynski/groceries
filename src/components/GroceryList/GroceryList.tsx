@@ -1,3 +1,5 @@
+import GroceryForm from './GroceryForm'
+
 export interface GroceryItem {
 	id: number
 	text: string
@@ -5,15 +7,19 @@ export interface GroceryItem {
 
 export interface GroceryListProps {
 	groceryItems: GroceryItem[]
+	createGroceryItem: (text: string) => Promise<void>
 }
 
-function GroceryList({ groceryItems }: GroceryListProps) {
+function GroceryList({ groceryItems, createGroceryItem }: GroceryListProps) {
 	return (
-		<ul>
-			{groceryItems.map(item => (
-				<li key={item.id}>{item.text}</li>
-			))}
-		</ul>
+		<>
+			<GroceryForm addItem={createGroceryItem} />
+			<ul>
+				{groceryItems.map(item => (
+					<li key={item.id}>{item.text}</li>
+				))}
+			</ul>
+		</>
 	)
 }
 
