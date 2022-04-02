@@ -1,22 +1,28 @@
+import { createGroceryItem, getGroceryList } from 'api/groceryClient'
+import type { GroceryItem } from 'components/GroceryList'
 import GroceryList from 'components/GroceryList'
-import { useGroceryList } from 'components/GroceryList/ListContext'
-import type { ReactElement } from 'react'
+import { useEffect, useState } from 'react'
 
-export default function Home(): ReactElement {
-	const { list, addItem } = useGroceryList()
+export default function Home() {
+	const [items, setItems] = useState<GroceryItem[]>([])
 
-	// useEffect(() => {
-	// 	async function fetchItems(): Promise<void> {
-	// 		const { data } = await getGroceryList()
-	// 		setItems(data)
-	// 	}
+	useEffect(() => {
+		async function fetchItems(): Promise<void> {
+			const { data } = await getGroceryList()
+			setItems(data)
+		}
 
-	// 	void fetchItems()
-	// })
+		void fetchItems()
+	})
+
+	const addItem = async (text: string) => {
+		await createGroceryItem(text)
+		setItems([...items, { id: items.length + 1, text }])
+	}
 
 	return (
 		<main>
-			<GroceryList groceryItems={list.items} createGroceryItem={addItem} />
+			<GroceryList groceryItems={items} createGroceryItem={addItem} />
 		</main>
 	)
 }

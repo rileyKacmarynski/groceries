@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
+import * as client from '../../src/api/groceryClient'
 
 describe('Adding Groceries', () => {
 	it('allows adding groceries', () => {
 		const item = 'pickles'
+
+		cy.stub(client, 'createGroceryItem').resolves()
+		cy.stub(client, 'getGroceryList').resolves()
 
 		cy.visit('/')
 
