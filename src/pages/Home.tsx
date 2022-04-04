@@ -20,9 +20,5 @@ export default function Home() {
 		setItems([...items, { id: items.length + 1, text }])
 	}
 
-	return (
-		<main>
-			<GroceryList groceryItems={items} createGroceryItem={addItem} />
-		</main>
-	)
+	return <GroceryList groceryItems={items} createGroceryItem={addItem} />
 }

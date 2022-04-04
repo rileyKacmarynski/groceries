@@ -1,15 +1,27 @@
 import type React from 'react'
+import Header from '../Header'
 import styled, { darkTheme } from '../theme'
 
+const Main = styled('main', {
+	paddingTop: '$space$6',
+})
+
+const Content = styled('div', {
+	padding: '$space$6',
+})
+
 const StyledLayout = styled('div', {
-	backgroundColor: '$indigo2',
-	color: '$indigo12'
+	minHeight: '100vh',
+	backgroundColor: '$slate1',
+	color: '$slate12',
 })
 
 const Layout: React.FC = ({ children }) => (
 	<StyledLayout className={darkTheme}>
-		this is my layout
-		{children}
+		<Header />
+		<Content>
+			<Main>{children}</Main>
+		</Content>
 	</StyledLayout>
 )
 

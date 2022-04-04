@@ -1,3 +1,4 @@
+import Button from 'components/ui/baseLibrary/Button'
 import type { FormEvent } from 'react'
 import { useState } from 'react'
 
@@ -31,9 +32,13 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 					value={item}
 					onChange={e => setItem(e.target.value)}
 				/>
-				<button type='submit' data-testid={ITEM_SUBMIT_BUTTON_TEST_ID}>
+				<Button
+					css={{ marginLeft: '$space$3' }}
+					type='submit'
+					data-testid={ITEM_SUBMIT_BUTTON_TEST_ID}
+				>
 					Add
-				</button>
+				</Button>
 			</form>
 		</div>
 	)
