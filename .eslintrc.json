@@ -173,7 +173,8 @@
 				"unicorn/prevent-abbreviations": "off",
 				"unicorn/explicit-length-check": "off",
 				"unicorn/consistent-function-scoping": "off",
-				"react/jsx-props-no-spreading": "off"
+				"react/jsx-props-no-spreading": "off",
+				"@typescript-eslint/no-floating-promises": "off"
 			}
 		}
 	]
