@@ -4,8 +4,9 @@ import userEvent from '@testing-library/user-event'
 import type { GroceryFormProps } from 'components/GroceryList/GroceryForm'
 import GroceryForm, {
 	ITEM_SUBMIT_BUTTON_TEST_ID,
-	ITEM_TEXT_INPUT_TEST_ID
+	ITEM_TEXT_INPUT_TEST_ID,
 } from 'components/GroceryList/GroceryForm'
+import { act } from 'react-dom/test-utils'
 import { describe, expect, it, vi } from 'vitest'
 
 describe('GroceryForm', () => {
@@ -17,7 +18,7 @@ describe('GroceryForm', () => {
 	const renderWithProps = (propOverrides: Partial<GroceryFormProps> = {}) => {
 		const props = {
 			addItem: vi.fn(),
-			...propOverrides
+			...propOverrides,
 		}
 
 		addItem = props.addItem
@@ -38,25 +39,29 @@ describe('GroceryForm', () => {
 
 	it('will not submit with empty input', async () => {
 		renderWithProps()
-		getSubmit().click()
+
+		await userEvent.click(getSubmit())
 
 		expect(addItem).not.toHaveBeenCalled()
 	})
 
-	it('will submit', () => {
+	it('will submit', async () => {
 		renderWithProps()
-		userEvent.type(getInput(), itemText)
+		await userEvent.type(getInput(), itemText)
 
-		userEvent.click(getSubmit())
+		await act(async () => {
+			await userEvent.click(getSubmit())
+		})
 
 		expect(addItem).toHaveBeenCalledWith(itemText)
 	})
 
 	it('clears the form after submitting', async () => {
 		renderWithProps()
-		userEvent.type(getInput(), itemText)
-
-		userEvent.click(getSubmit())
+		await userEvent.type(getInput(), itemText)
+		await act(async () => {
+			await userEvent.click(getSubmit())
+		})
 
 		await waitFor(() => expect(getInput().value).toBe(''))
 	})

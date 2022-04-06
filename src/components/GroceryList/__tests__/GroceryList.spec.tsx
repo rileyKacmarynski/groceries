@@ -9,7 +9,7 @@ import GroceryList from '../GroceryList'
 describe('GroceryList', () => {
 	const items = [
 		{ id: 1, text: 'bread' },
-		{ id: 1, text: 'milk' }
+		{ id: 2, text: 'milk' },
 	]
 
 	// eslint-disable-next-line no-unused-vars
@@ -22,7 +22,7 @@ describe('GroceryList', () => {
 			// loadGroceryList: vi.fn<[], GroceryItem[]>(() => items),
 			createGroceryItem: vi.fn<[string], Promise<void>>(async () => {}),
 			groceryItems: items,
-			...propOverrides
+			...propOverrides,
 		}
 
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
