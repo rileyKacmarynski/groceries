@@ -18,13 +18,13 @@ const SvgIcon: React.FC<SvgIconProps> = ({
 	let svgSize
 	switch (size) {
 		case 'large':
-			svgSize = 30
-			break
-		case 'medium':
 			svgSize = 25
 			break
-		case 'small':
+		case 'medium':
 			svgSize = 20
+			break
+		case 'small':
+			svgSize = 15
 			break
 		default:
 			throw new Error('Invalid size')

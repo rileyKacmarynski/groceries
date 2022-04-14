@@ -10,6 +10,8 @@ describe('Adding Groceries', () => {
 
 		cy.visit('/')
 
+		cy.findByTestId('item-add-button').click()
+
 		cy.get('main form input[name="item-text"]').type(item)
 		cy.get('main form button[type="submit"]').click()
 

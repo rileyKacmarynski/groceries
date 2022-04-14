@@ -8,15 +8,31 @@ import {
 	slate,
 	slateDark,
 	violetDark,
+	whiteA,
 	yellow,
 	yellowDark,
 } from '@radix-ui/colors'
 import { createStitches } from '@stitches/react'
 
 const primaryColor = 'indigo'
+const primaryColors = {
+	primary1: `$${primaryColor}1`,
+	primary2: `$${primaryColor}2`,
+	primary3: `$${primaryColor}3`,
+	primary4: `$${primaryColor}4`,
+	primary5: `$${primaryColor}5`,
+	primary6: `$${primaryColor}6`,
+	primary7: `$${primaryColor}7`,
+	primary8: `$${primaryColor}8`,
+	primary9: `$${primaryColor}9`,
+	primary10: `$${primaryColor}10`,
+	primary11: `$${primaryColor}11`,
+	primary12: `$${primaryColor}12`,
+}
 const { styled, createTheme } = createStitches({
 	theme: {
 		colors: {
+			...whiteA,
 			...slate,
 			...indigo,
 			...green,
@@ -27,25 +43,22 @@ const { styled, createTheme } = createStitches({
 			accentBackground: `$${primaryColor}9`,
 			textLight: '$slate1',
 			textDark: '$slate12',
-			primaryElementBackground: `$${primaryColor}5`,
-			primaryElementHover: `$${primaryColor}6`,
-			primaryElementActive: `$${primaryColor}7`,
-			primarySubtleBorder: `$${primaryColor}8`,
-			primaryUiElementBorder: `$${primaryColor}9`,
-			primaryUiElementHover: `$${primaryColor}9`,
-			primaryHoverBackground: `$${primaryColor}10`,
+			...primaryColors,
 		},
 		space: {
 			1: '0.25rem',
 			2: '0.5rem',
 			3: '1rem',
-			4: '1.5rem',
-			5: '2rem',
-			6: '3rem',
-			7: '4rem',
-			8: '6rem',
-			9: '8rem',
-			10: '10rem',
+			4: '1.15rem',
+			5: '1.5rem',
+			6: '1.75rem',
+			7: '2rem',
+			8: '2.5rem',
+			9: '3rem',
+			10: '4rem',
+			11: '6rem',
+			12: '8rem',
+			13: '10rem',
 		},
 		fontSizes: {
 			1: '0.75rem',
@@ -80,9 +93,17 @@ const { styled, createTheme } = createStitches({
 			marginLeft: value,
 			marginRight: value,
 		}),
+		my: (value: number | string) => ({
+			marginTop: value,
+			marginBottom: value,
+		}),
 		px: (value: number | string) => ({
 			paddingLeft: value,
 			paddingRight: value,
+		}),
+		py: (value: number | string) => ({
+			paddingTop: value,
+			paddingBottom: value,
 		}),
 		size: (value: number | string) => ({
 			width: value,
@@ -101,16 +122,10 @@ export const darkTheme = createTheme({
 		...violetDark,
 
 		// semantic tokens
-		accentBackground: '$slate1',
+		accentBackground: '$slate4',
 		textLight: '$slate12',
 		textDark: '$slate1',
-		primaryElementBackground: `$${primaryColor}4`,
-		primaryElementHover: `$${primaryColor}5`,
-		primaryElementActive: `$${primaryColor}6`,
-		primarySubtleBorder: `$${primaryColor}7`,
-		primaryUiElementBorder: `$${primaryColor}8`,
-		primaryUiElementHover: `$${primaryColor}8`,
-		primaryHoverBackground: `$${primaryColor}9`,
+		...primaryColors,
 	},
 })
 

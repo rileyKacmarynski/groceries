@@ -3,7 +3,8 @@ import Header from '../Header'
 import styled, { darkTheme } from '../theme'
 
 const Main = styled('main', {
-	paddingTop: '$space$6',
+	paddingTop: '$space$8',
+	// px: '$space$6',
 })
 
 const Content = styled('div', {

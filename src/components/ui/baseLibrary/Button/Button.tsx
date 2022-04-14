@@ -19,39 +19,60 @@ const Button = styled('button', {
 	height: '$space$5',
 	borderRadius: '$radii$2',
 	alignItems: 'center',
-	textTransform: 'uppercase',
-	letterSpacing: '1.75px',
 	fontWeight: '$fontWeights$bold',
 	transition: 'all 0.15s ease-in-out',
 	color: '$slate12',
 
+	'&:focus': {
+		outline: 'solid 2px $colors$primary6',
+	},
+
+	'&[aria-disabled="true"]': {
+		opacity: '0.4',
+		cursor: 'not-allowed',
+	},
+
 	variants: {
 		size: {
 			1: {
-				fontSize: '$1',
-				height: '$space$4',
-				px: '$space$2',
+				fontSize: '.875rem',
+				height: '$space$7',
+				px: '10px',
 			},
 			2: {
 				fontSize: '$2',
-				height: '$space$5',
+				height: '$space$8',
 				px: '$space$3',
 			},
 			3: {
+				fontSize: '$2',
+				height: '$space$8',
+				px: '$space$3',
+			},
+			4: {
 				fontSize: '$3',
-				height: '$space$6',
+				height: '$space$9',
 				px: '$space$4',
 			},
 		},
 		variant: {
 			primary: {
-				backgroundColor: '$colors$primaryElementBackground',
+				backgroundColor: '$colors$primary4',
 				'&:hover': {
 					cursor: 'pointer',
-					backgroundColor: '$colors$primaryElementHover',
+					backgroundColor: '$colors$primary5',
 				},
 				'&:active': {
-					backgroundColor: '$colors$primaryElementActive',
+					backgroundColor: '$colors$primary6',
+				},
+			},
+			secondary: {
+				backgroundColor: '$colors$slate4',
+				'&:hover': {
+					backgroundColor: '$colors$slate5',
+				},
+				'&:active': {
+					backgroundColor: '$colors$slate6',
 				},
 			},
 			red: {
@@ -81,6 +102,15 @@ const Button = styled('button', {
 					backgroundColor: '$colors$green8',
 				},
 			},
+			hoverOnly: {
+				backgroundColor: 'transparent',
+				'&:hover': {
+					backgroundColor: '$colors$whiteA4',
+				},
+				'&:active': {
+					backgroundColor: '$colors$whiteA6',
+				},
+			},
 		},
 		outlined: {
 			true: {
@@ -89,17 +119,28 @@ const Button = styled('button', {
 				boxShadow: '0 0 0 2px $$shadowColor',
 			},
 		},
+		hoverOnly: {
+			true: {
+				backgroundColor: 'transparent',
+
+				'&:hover': {
+					// color: '$colors$primary11',
+					backgroundColor: '$whiteA4',
+				},
+			},
+		},
 	},
 	defaultVariants: {
 		variant: 'primary',
-		size: 2,
+		size: 1,
 	},
 	compoundVariants: [
 		{
 			variant: 'primary',
 			outlined: true,
 			css: {
-				$$shadowColor: '$colors$primaryElementHover',
+				$$shadowColor: '$colors$primary5',
+				backgroundColor: 'transparent',
 			},
 		},
 		{

@@ -11,9 +11,9 @@ const StyledHeader = styled('header', {
 	top: 0,
 	left: 0,
 	width: '100%',
-	height: '$space$6',
+	height: '$space$8',
 	backgroundColor: '$accentBackground',
-	boxShadow: '0 0 0 1px $colors$slate6',
+	// boxShadow: '0 0 0 1px $colors$slate6',
 	color: 'inherit',
 	'& > div': {
 		px: '$space$4',
