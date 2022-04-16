@@ -12,6 +12,10 @@ export interface GroceryFormProps {
 	addItem: (text: string) => Promise<void>
 }
 
+const FormContainer = styled('section', {
+	borderTop: '1px solid $colors$slate7',
+})
+
 const Form = styled('form', {
 	marginTop: '$space$3',
 	maxWidth: '240px',
@@ -48,7 +52,7 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 	}
 
 	return (
-		<div>
+		<FormContainer aria-label='Grocery form'>
 			{formOpen ? (
 				<Form onSubmit={e => void onSubmitForm(e)}>
 					<Input
@@ -76,7 +80,7 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 			) : (
 				<AddButton onClick={onAddClick} />
 			)}
-		</div>
+		</FormContainer>
 	)
 }
 

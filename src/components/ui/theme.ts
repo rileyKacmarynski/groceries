@@ -129,4 +129,13 @@ export const darkTheme = createTheme({
 	},
 })
 
+export const duration = {
+	1: '125ms',
+	2: '250ms',
+	3: '325ms',
+	4: '500ms',
+	5: '750ms',
+	6: '1s',
+}
+
 export default styled

@@ -175,6 +175,7 @@
 				"react/jsx-props-no-spreading": "off",
 				"@typescript-eslint/no-magic-numbers": ["off"],
 				"testing-library/no-await-sync-events": "off",
+				"@typescript-eslint/no-misused-promises": "off",
 				"testing-library/no-unnecessary-act": "off",
 				"@typescript-eslint/no-floating-promises": "off"
 			}

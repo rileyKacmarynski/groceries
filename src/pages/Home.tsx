@@ -13,12 +13,22 @@ export default function Home() {
 		}
 
 		void fetchItems()
-	})
+	}, [])
 
 	const addItem = async (text: string) => {
 		await createGroceryItem(text)
 		setItems([...items, { id: items.length + 1, text }])
 	}
 
-	return <GroceryList groceryItems={items} createGroceryItem={addItem} />
+	const removeItem = async (id: number) => {
+		setItems(i => i.filter(item => item.id !== id))
+	}
+
+	return (
+		<GroceryList
+			groceryItems={items}
+			removeGroceryItem={removeItem}
+			createGroceryItem={addItem}
+		/>
+	)
 }

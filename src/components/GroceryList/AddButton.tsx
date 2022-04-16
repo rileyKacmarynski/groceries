@@ -5,9 +5,14 @@ import type { ButtonHTMLAttributes } from 'react'
 export const ITEM_ADD_BUTTON_TEST_ID = 'item-add-button'
 
 const AddButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
+	// change this button, it's kind of ugly
 	<Button
 		variant='hoverOnly'
-		css={{ display: 'flex', px: '$1', marginTop: '$space$3' }}
+		css={{
+			display: 'flex',
+			px: '$1',
+			marginTop: '$space$3',
+		}}
 		type='button'
 		data-testid={ITEM_ADD_BUTTON_TEST_ID}
 		{...props}

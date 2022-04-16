@@ -15,7 +15,9 @@ describe('GroceryForm', () => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	let addItem = async (text: string): Promise<void> => {}
 
-	const renderWithProps = (propOverrides: Partial<GroceryFormProps> = {}) => {
+	const renderWithProps = async (
+		propOverrides: Partial<GroceryFormProps> = {},
+	) => {
 		const props = {
 			addItem: vi.fn(),
 			...propOverrides,
@@ -27,6 +29,7 @@ describe('GroceryForm', () => {
 	}
 
 	const getInput = async () =>
+		// eslint-disable-next-line @typescript-eslint/return-await
 		screen.findByTestId<HTMLInputElement>(ITEM_TEXT_INPUT_TEST_ID)
 
 	const getSubmit = async () =>
