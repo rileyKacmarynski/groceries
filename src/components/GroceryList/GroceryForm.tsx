@@ -67,6 +67,8 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 					<ButtonGroup>
 						<Button
 							type='submit'
+							disabled={!item.length}
+							aria-disabled={!item.length}
 							outlined
 							data-testid={ITEM_SUBMIT_BUTTON_TEST_ID}
 						>

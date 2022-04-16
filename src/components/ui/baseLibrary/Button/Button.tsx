@@ -29,7 +29,10 @@ const Button = styled('button', {
 
 	'&[aria-disabled="true"]': {
 		opacity: '0.4',
-		cursor: 'not-allowed',
+		'&:hover': {
+			backgroundColor: 'transparent',
+			cursor: 'not-allowed',
+		},
 	},
 
 	variants: {

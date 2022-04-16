@@ -9,7 +9,7 @@ import GroceryForm, {
 import { describe, expect, it, vi } from 'vitest'
 import { ITEM_ADD_BUTTON_TEST_ID } from '../AddButton'
 
-describe('GroceryForm', () => {
+describe('<GroceryForm />', () => {
 	const itemText = 'apple'
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -64,6 +64,14 @@ describe('GroceryForm', () => {
 		await userEvent.click(await getSubmit())
 
 		expect(addItem).not.toHaveBeenCalled()
+	})
+
+	it('shows the button as disabled when the input is empty', async () => {
+		renderWithProps()
+		await userEvent.click(await findAdd())
+
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		expect(await getSubmit()).toBeDisabled()
 	})
 
 	it('will submit', async () => {
