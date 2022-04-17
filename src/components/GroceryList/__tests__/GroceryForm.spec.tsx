@@ -52,7 +52,7 @@ describe('<GroceryForm />', () => {
 
 		await userEvent.click(await findAdd())
 
-		expect(getAdd()).toBeNull()
+		await waitFor(() => expect(getAdd()).not.toBeInTheDocument())
 		expect(await getInput()).not.toBeNull()
 		expect(await getSubmit()).not.toBeNull()
 	})

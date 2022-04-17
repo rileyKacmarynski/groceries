@@ -35,6 +35,7 @@ specifiers:
   eslint-plugin-react-prefer-function-component: ^1.0.0
   eslint-plugin-testing-library: ^5.3.1
   eslint-plugin-unicorn: 42.0.0
+  framer-motion: ^6.3.0
   husky: ^7.0.4
   jsdom: ^19.0.0
   lint-staged: ^12.3.8
@@ -62,6 +63,7 @@ specifiers:
 dependencies:
   '@radix-ui/colors': 0.1.8
   '@stitches/react': 1.2.7_react@18.0.0
+  framer-motion: 6.3.0_react-dom@18.0.0+react@18.0.0
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
   react-query: 3.34.16_react-dom@18.0.0+react@18.0.0
@@ -1908,6 +1910,25 @@ packages:
       debug: 3.2.7
       lodash.once: 4.1.1
     dev: true
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution:
+      {
+        integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==,
+      }
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution:
+      {
+        integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==,
+      }
+    dev: false
+    optional: true
 
   /@eslint/eslintrc/1.2.1:
     resolution:
@@ -6163,6 +6184,35 @@ packages:
       mime-types: 2.1.35
     dev: true
 
+  /framer-motion/6.3.0_react-dom@18.0.0+react@18.0.0:
+    resolution:
+      {
+        integrity: sha512-Nm6l2cemuFeSC1fmq9R32sCQs1eplOuZ3r14/PxRDewpE3NUr+ul5ulGRRzk8K0Aa5p76Tedi3sfCUaTPa5fRg==,
+      }
+    peerDependencies:
+      react: '>=16.8 || ^17.0.0 || ^18.0.0'
+      react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      popmotion: 11.0.3
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
+      style-value-types: 5.0.0
+      tslib: 2.3.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
+  /framesync/6.0.1:
+    resolution:
+      {
+        integrity: sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA==,
+      }
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
   /from/0.1.7:
     resolution: { integrity: sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4= }
     dev: true
@@ -6616,6 +6666,13 @@ packages:
       is-stream: 2.0.1
       type-fest: 0.8.1
     dev: true
+
+  /hey-listen/1.0.8:
+    resolution:
+      {
+        integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==,
+      }
+    dev: false
 
   /history/5.3.0:
     resolution:
@@ -8910,6 +8967,18 @@ packages:
     engines: { node: '>=4' }
     dev: true
 
+  /popmotion/11.0.3:
+    resolution:
+      {
+        integrity: sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==,
+      }
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      style-value-types: 5.0.0
+      tslib: 2.3.1
+    dev: false
+
   /postcss-media-query-parser/0.2.3:
     resolution: { integrity: sha1-J7Ocb02U+Bsac7j3Y1HGCeXO8kQ= }
     dev: true
@@ -10346,6 +10415,16 @@ packages:
     resolution: { integrity: sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI= }
     dev: true
 
+  /style-value-types/5.0.0:
+    resolution:
+      {
+        integrity: sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==,
+      }
+    dependencies:
+      hey-listen: 1.0.8
+      tslib: 2.3.1
+    dev: false
+
   /stylelint-config-prettier/9.0.3_stylelint@14.7.0:
     resolution:
       {
@@ -10774,7 +10853,6 @@ packages:
       {
         integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==,
       }
-    dev: true
 
   /tsutils/3.21.0_typescript@4.6.3:
     resolution:

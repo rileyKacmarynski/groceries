@@ -8,7 +8,8 @@ const Main = styled('main', {
 })
 
 const Content = styled('div', {
-	padding: '$space$6',
+	paddingTop: '$space$6',
+	px: '$space$10',
 })
 
 const StyledLayout = styled('div', {
