@@ -37,7 +37,6 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 
 	const onSubmitForm = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault()
-
 		if (item.length) {
 			await addItem(item)
 			setFormOpen(false)

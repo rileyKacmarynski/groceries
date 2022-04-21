@@ -1,18 +1,25 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { H2, H3 } from 'components/ui/baseLibrary/typography/Headings'
 import styled from 'components/ui/theme'
+import { AnimatePresence } from 'framer-motion'
+import type { DropResult } from 'react-beautiful-dnd'
+import { DraggableList, DraggableListItem } from './DraggableList'
 import GroceryForm from './GroceryForm'
 import GroceryItem from './GroceryItem'
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export interface GroceryItem {
-	id: number
+	id: string
 	text: string
+	sortOrder: number
 }
-
 export interface GroceryListProps {
 	groceryItems: GroceryItem[]
 	createGroceryItem: (text: string) => Promise<void>
-	removeGroceryItem: (id: number) => Promise<void>
+	removeGroceryItem: (id: string) => Promise<void>
+	reorderGroceryItems: (oldIndex: number, newIndex: number) => Promise<void>
 }
 
 const Ul = styled('ul', {
@@ -25,10 +32,22 @@ const Ul = styled('ul', {
 
 	marginBottom: '$space$2',
 
-	'& > li': {
+	'& li': {
 		py: '$space$1',
 	},
 })
+
+// interface ItemListProps {
+// 	innerRef: HTMLElement | null
+// }
+
+// const ItemList: React.FC<ItemListProps> = ({ innerRef }) => {
+// 	return (
+// 		<div ref={innerRef}>
+// 			yo
+// 		</div>
+// 	)
+// }
 
 const ContentHeader = styled('div', {
 	display: 'flex',
@@ -40,7 +59,13 @@ function GroceryList({
 	groceryItems,
 	createGroceryItem,
 	removeGroceryItem,
+	reorderGroceryItems,
 }: GroceryListProps) {
+	const onDragEnd = async (result: Required<DropResult>) => {
+		const { destination, source } = result
+		await reorderGroceryItems(source.index, destination.index)
+	}
+
 	return (
 		<section aria-label='Grocery list'>
 			<ContentHeader>
@@ -54,15 +79,27 @@ function GroceryList({
 					{new Date().toLocaleDateString()}
 				</H3>
 			</ContentHeader>
-			<Ul aria-labelledby='groceries-heading'>
-				{groceryItems.map(item => (
-					<GroceryItem
-						key={item.id}
-						text={item.text}
-						remove={async () => removeGroceryItem(item.id)}
-					/>
-				))}
-			</Ul>
+			<DraggableList onDragEnd={onDragEnd}>
+				<Ul aria-labelledby='groceries-heading'>
+					<AnimatePresence>
+						{groceryItems.map((item, index) => (
+							<DraggableListItem
+								key={item.id}
+								dragId={item.id}
+								dragIndex={index}
+							>
+								{(provided, snapshot) => (
+									<GroceryItem
+										text={item.text}
+										isDragging={snapshot.isDragging}
+										remove={async () => removeGroceryItem(item.id)}
+									/>
+								)}
+							</DraggableListItem>
+						))}
+					</AnimatePresence>
+				</Ul>
+			</DraggableList>
 			<GroceryForm addItem={createGroceryItem} />
 		</section>
 	)
