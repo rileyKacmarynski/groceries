@@ -18,7 +18,7 @@ const StyledLayout = styled('div', {
 	color: '$slate12',
 })
 
-const Layout: React.FC = ({ children }) => (
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 	<StyledLayout className={darkTheme}>
 		<Header />
 		<Content>

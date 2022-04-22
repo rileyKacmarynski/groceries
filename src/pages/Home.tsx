@@ -20,6 +20,7 @@ export default function Home() {
 	}, [])
 
 	const addItem = async (text: string) => {
+		// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 		const item = await createGroceryItem(text)
 		setItems([...items, item])
 	}

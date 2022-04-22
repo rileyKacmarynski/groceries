@@ -11,13 +11,12 @@ const AddButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
 		css={{
 			display: 'flex',
 			px: '$1',
-			marginTop: '$space$3',
 		}}
 		type='button'
-		data-testid={ITEM_ADD_BUTTON_TEST_ID}
+		// data-testid={ITEM_SUBMIT_BUTTON_TEST_ID}
 		{...props}
 	>
-		<SvgIcon css={{ marginRight: '$2' }}>
+		<SvgIcon>
 			<svg
 				width='15'
 				height='15'
@@ -33,7 +32,6 @@ const AddButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
 				/>
 			</svg>
 		</SvgIcon>
-		Add
 	</Button>
 )
 

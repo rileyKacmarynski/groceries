@@ -132,6 +132,15 @@
 		],
 		"semi": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/no-misused-promises": [
+			"error",
+			{
+				"checksVoidReturn": {
+					"arguments": false,
+					"attributes": false
+				}
+			}
+		],
 		"react/jsx-handler-names": "off",
 		"unicorn/prevent-abbreviations": "off",
 		"unicorn/explicit-length-check": "off",

@@ -5,6 +5,7 @@ interface SvgIconProps {
 	size?: 'large' | 'medium' | 'small'
 	fill?: string
 	css?: Stitches.CSS
+	children: React.ReactNode
 }
 
 const StyledSvg = styled('svg', {})

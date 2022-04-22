@@ -39,8 +39,8 @@ const DraggableList: React.FC<DraggableListProps> = ({
 	}
 
 	return (
-		<DragDropContext onDragEnd={onDragEnd}>
-			<Droppable droppableId='droppable'>
+		<DragDropContext onDragEnd={onDragEndWrapper}>
+			<Droppable droppableId='fuckthis'>
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
 						{/* {children(provided, snapshot)} */}

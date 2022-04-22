@@ -27,8 +27,9 @@ const Button = styled('button', {
 		outline: 'solid 2px $colors$primary6',
 	},
 
-	'&[aria-disabled="true"]': {
+	'&[aria-disabled="true"], &:disabled': {
 		opacity: '0.4',
+		color: '$colors$slate7',
 		'&:hover': {
 			backgroundColor: 'transparent',
 			cursor: 'not-allowed',

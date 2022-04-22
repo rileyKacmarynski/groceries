@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { H2, H3 } from 'components/ui/baseLibrary/typography/Headings'
 import styled from 'components/ui/theme'
 import { AnimatePresence } from 'framer-motion'
