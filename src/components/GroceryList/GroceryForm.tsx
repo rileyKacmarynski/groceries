@@ -16,6 +16,15 @@ const Form = styled('form', {
 	// maxWidth: '240px',
 	display: 'flex',
 	alignItems: 'center',
+
+	// add button should appear before input,
+	// but I don't want to mess up tabbing through the form
+	'& input': {
+		order: 2,
+	},
+	'& button': {
+		order: 1,
+	},
 })
 
 const TextInput = styled(Input, {
@@ -56,7 +65,7 @@ function GroceryForm({ addItem }: GroceryFormProps): JSX.Element {
 				<Form onSubmit={onSubmitForm}>
 					<TextInput
 						type='text'
-						css={{ marginLeft: 'x$6', marginRight: '$2' }}
+						css={{ marginLeft: '$2', marginRight: '$2' }}
 						name='item-text'
 						id='item-text'
 						data-testid={ITEM_TEXT_INPUT_TEST_ID}

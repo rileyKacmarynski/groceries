@@ -4,13 +4,13 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import type { GroceryListProps } from '../GroceryList'
+import type { GroceryItem, GroceryListProps } from '../GroceryList'
 import GroceryList from '../GroceryList'
 
 describe('<GroceryList />', () => {
-	const items = [
-		{ id: 1, text: 'bread' },
-		{ id: 2, text: 'milk' },
+	const items: GroceryItem[] = [
+		{ id: '1', text: 'bread', sortOrder: 1 },
+		{ id: '2', text: 'milk', sortOrder: 2 },
 	]
 
 	// eslint-disable-next-line no-unused-vars
@@ -22,7 +22,10 @@ describe('<GroceryList />', () => {
 		const props: GroceryListProps = {
 			// loadGroceryList: vi.fn<[], GroceryItem[]>(() => items),
 			createGroceryItem: vi.fn<[string], Promise<void>>(async () => {}),
-			removeGroceryItem: vi.fn<[number], Promise<void>>(async () => {}),
+			removeGroceryItem: vi.fn<[string], Promise<void>>(async () => {}),
+			reorderGroceryItems: vi.fn<[number, number], Promise<void>>(
+				async () => {},
+			),
 			groceryItems: items,
 			...propOverrides,
 		}
@@ -41,7 +44,7 @@ describe('<GroceryList />', () => {
 	})
 
 	it('removes items', async () => {
-		const removeItemMock = vi.fn<[number], Promise<void>>()
+		const removeItemMock = vi.fn<[string], Promise<void>>()
 		// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 		// const removeItemMock = async (id: number) => console.log(id)
 		renderWithProps({ removeGroceryItem: removeItemMock })
@@ -55,6 +58,6 @@ describe('<GroceryList />', () => {
 
 		await userEvent.click(button)
 
-		expect(removeItemMock).toHaveBeenCalledWith(1)
+		expect(removeItemMock).toHaveBeenCalledWith('1')
 	})
 })

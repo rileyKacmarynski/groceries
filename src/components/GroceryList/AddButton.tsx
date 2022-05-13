@@ -7,10 +7,11 @@ export const ITEM_ADD_BUTTON_TEST_ID = 'item-add-button'
 const AddButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
 	// change this button, it's kind of ugly
 	<Button
-		variant='hoverOnly'
+		variant='secondary'
 		css={{
-			display: 'flex',
+			height: '$space$6',
 			px: '$1',
+			display: 'flex',
 		}}
 		type='button'
 		// data-testid={ITEM_SUBMIT_BUTTON_TEST_ID}

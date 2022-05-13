@@ -29,7 +29,7 @@ const Button = styled('button', {
 
 	'&[aria-disabled="true"], &:disabled': {
 		opacity: '0.4',
-		color: '$colors$slate7',
+		color: '$colors$slate9',
 		'&:hover': {
 			backgroundColor: 'transparent',
 			cursor: 'not-allowed',

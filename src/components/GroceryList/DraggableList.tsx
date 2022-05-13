@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from 'react'
 import type {
 	DraggableProvided,
 	DraggableStateSnapshot,
 	DropResult,
 } from 'react-beautiful-dnd'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { v4 as uuidv4 } from 'uuid'
 
 interface DraggableListProps {
 	onDragEnd: (result: Required<DropResult>) => Promise<void>
@@ -19,6 +21,12 @@ const DraggableList: React.FC<DraggableListProps> = ({
 	onDragEnd,
 	children,
 }) => {
+	const [id, setId] = useState<string>(uuidv4())
+
+	useEffect(() => {
+		setId(uuidv4())
+	}, [children])
+
 	const onDragEndWrapper = async (result: DropResult) => {
 		const { destination, source } = result
 
@@ -40,7 +48,7 @@ const DraggableList: React.FC<DraggableListProps> = ({
 
 	return (
 		<DragDropContext onDragEnd={onDragEndWrapper}>
-			<Droppable droppableId='fuckthis'>
+			<Droppable droppableId={id}>
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
 						{/* {children(provided, snapshot)} */}
@@ -67,7 +75,11 @@ const DraggableListItem: React.FC<DraggableListItemProps> = ({
 	dragId,
 	dragIndex,
 }) => (
-	<Draggable draggableId={dragId} key={dragId} index={dragIndex}>
+	<Draggable
+		draggableId={`list-${dragId}`}
+		key={`list-${dragId}`}
+		index={dragIndex}
+	>
 		{(dragProvided, snapshot) => (
 			<div
 				ref={dragProvided.innerRef}
