@@ -20,12 +20,7 @@ export interface AlertProps {
 	}
 }
 
-const Alert: React.FC<AlertProps> = ({
-	title,
-	description,
-	action,
-	removeAlert,
-}) => {
+const Alert: React.FC<AlertProps> = ({ title, action, removeAlert }) => {
 	const [isOpen, setIsOpen] = useState(true)
 
 	const onRemove = (open: boolean) => {
@@ -34,7 +29,7 @@ const Alert: React.FC<AlertProps> = ({
 	}
 
 	return (
-		<Toast open onOpenChange={onRemove}>
+		<Toast open={isOpen} onOpenChange={onRemove}>
 			<ToastTitle>{title}</ToastTitle>
 			{/* <ToastDescription>{description}</ToastDescription> */}
 			{action && (
@@ -42,9 +37,10 @@ const Alert: React.FC<AlertProps> = ({
 					<Button
 						css={{
 							marginRight: '15px',
-							height: '$space$6',
+							height: '$space$5',
 							backgroundColor: '$colors$whiteA5',
 							color: '$colors$slate1',
+							fontSize: '$fontSizes$1',
 							fontWeight: 700,
 
 							'&:hover': {

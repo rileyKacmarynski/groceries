@@ -23,6 +23,7 @@ const Ul = styled('ul', {
 	// reset
 	padding: 0,
 	listStyle: 'none',
+	zIndex: 1,
 
 	color: '$slate12',
 	// borderBottom: '1px solid $colors$slate7',
@@ -50,6 +51,10 @@ const ContentHeader = styled('div', {
 	display: 'flex',
 	alignItems: 'center',
 	gap: '$space$2',
+	position: 'sticky',
+	top: 0,
+	backgroundColor: '$colors$slate1',
+	zIndex: 2,
 })
 
 function GroceryList({

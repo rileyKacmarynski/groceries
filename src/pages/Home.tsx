@@ -5,7 +5,6 @@ import {
 } from 'api/groceryClient'
 import type { GroceryItem } from 'components/GroceryList'
 import GroceryList from 'components/GroceryList'
-import Alert from 'components/ui/baseLibrary/Alert'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -42,24 +41,11 @@ export default function Home() {
 	}
 
 	return (
-		<>
-			{/* <AlertTester /> */}
-			<Alert
-				title='title'
-				description='this is a longer description'
-				removeAlert={() => {}}
-				action={{
-					actionText: 'action',
-					altActionText: 'alt action',
-					actionFn: () => {},
-				}}
-			/>
-			<GroceryList
-				groceryItems={items}
-				removeGroceryItem={removeItem}
-				createGroceryItem={addItem}
-				reorderGroceryItems={reorderItems}
-			/>
-		</>
+		<GroceryList
+			groceryItems={items}
+			removeGroceryItem={removeItem}
+			createGroceryItem={addItem}
+			reorderGroceryItems={reorderItems}
+		/>
 	)
 }

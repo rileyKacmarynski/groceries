@@ -27,7 +27,7 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
 	flexDirection: 'column',
 	padding: VIEWPORT_PADDING,
 	gap: 10,
-	width: 390,
+	width: 340,
 	maxWidth: '100vw',
 	margin: 0,
 	listStyle: 'none',
