@@ -36,16 +36,20 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
 })
 
 const StyledToast = styled(ToastPrimitive.Root, {
-	backgroundColor: 'white',
+	position: 'relative',
+	backgroundColor: '$primary12',
 	borderRadius: 6,
-	boxShadow:
-		'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
-	padding: 15,
-	display: 'grid',
-	gridTemplateAreas: '"title action" "description action"',
-	gridTemplateColumns: 'auto max-content',
-	columnGap: 15,
+	boxShadow: 'var(--shadow-elevation-high)',
+	padding: 10,
+	display: 'flex',
 	alignItems: 'center',
+	// display: 'grid',
+	// gridTemplateAreas: `
+	// 	"close close"
+	// 	"title action"
+	// `,
+	gridTemplateColumns: 'auto max-content',
+	rowGap: 5,
 
 	'@media (prefers-reduced-motion: no-preference)': {
 		'&[data-state="open"]': {
@@ -69,22 +73,23 @@ const StyledToast = styled(ToastPrimitive.Root, {
 
 const StyledTitle = styled(ToastPrimitive.Title, {
 	gridArea: 'title',
-	marginBottom: 5,
+	marginRight: 'auto',
 	fontWeight: 500,
-	color: '$slate12',
+	color: '$slate7',
 	fontSize: 15,
 })
 
 const StyledDescription = styled(ToastPrimitive.Description, {
 	gridArea: 'description',
 	margin: 0,
-	color: '$slate11',
+	color: '$slate9',
 	fontSize: 13,
 	lineHeight: 1.3,
 })
 
 const StyledAction = styled(ToastPrimitive.Action, {
 	gridArea: 'action',
+	alignSelf: 'end',
 })
 
 // Exports

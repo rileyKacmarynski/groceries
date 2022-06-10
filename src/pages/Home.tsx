@@ -5,57 +5,8 @@ import {
 } from 'api/groceryClient'
 import type { GroceryItem } from 'components/GroceryList'
 import GroceryList from 'components/GroceryList'
-import Button from 'components/ui/baseLibrary/Button'
-import {
-	Toast,
-	ToastAction,
-	ToastDescription,
-	ToastTitle,
-} from 'components/ui/baseLibrary/Toast'
-import type React from 'react'
+import Alert from 'components/ui/baseLibrary/Alert'
 import { useEffect, useState } from 'react'
-
-const Toastie: React.FC<{ removeToast: () => void }> = ({ removeToast }) => {
-	const [isOpen, setIsOpen] = useState(true)
-
-	const onRemove = (open: boolean) => {
-		removeToast()
-		setIsOpen(open)
-	}
-
-	return (
-		<Toast open={isOpen} onOpenChange={onRemove}>
-			<ToastTitle>Toastie BOI</ToastTitle>
-			<ToastDescription>This is a really toastie boi</ToastDescription>
-			<ToastAction asChild altText='ope'>
-				<Button>ope</Button>
-			</ToastAction>
-		</Toast>
-	)
-}
-
-const ToastieBoi = () => {
-	const [length, setLength] = useState(0)
-	// const [isOpen, setIsOpen] = useState(false)
-
-	const addToast = () => {
-		setLength(l => l + 1)
-	}
-
-	const removeToast = () => {
-		setLength(l => l - 1)
-	}
-
-	return (
-		<>
-			{/* <Button onClick={() => setIsOpen(o => !o)}>Open Toastie</Button> */}
-			<Button onClick={addToast}>Open Toastie</Button>
-			{Array.from({ length }, (_, i) => (
-				<Toastie key={i} removeToast={removeToast} />
-			))}
-		</>
-	)
-}
 
 export default function Home() {
 	const [items, setItems] = useState<GroceryItem[]>([])
@@ -92,7 +43,17 @@ export default function Home() {
 
 	return (
 		<>
-			<ToastieBoi />
+			{/* <AlertTester /> */}
+			<Alert
+				title='title'
+				description='this is a longer description'
+				removeAlert={() => {}}
+				action={{
+					actionText: 'action',
+					altActionText: 'alt action',
+					actionFn: () => {},
+				}}
+			/>
 			<GroceryList
 				groceryItems={items}
 				removeGroceryItem={removeItem}

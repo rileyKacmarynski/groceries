@@ -18,11 +18,13 @@ const ListContext = React.createContext<GroceryListStore | undefined>(undefined)
 const initialState: GroceryListState = {
 	items: [
 		{ id: 1, text: 'bread' },
-		{ id: 2, text: 'milk' }
-	]
+		{ id: 2, text: 'milk' },
+	],
 }
 
-const GroceryListProvider: React.FC = ({ children }) => {
+const GroceryListProvider: React.FC<{ children: React.ReactNode }> = ({
+	children,
+}) => {
 	const [state, setState] = React.useState(initialState)
 
 	const addItem = React.useCallback(
@@ -32,17 +34,17 @@ const GroceryListProvider: React.FC = ({ children }) => {
 					...state.items,
 					{
 						id: state.items.length + 1,
-						text
-					}
-				]
+						text,
+					},
+				],
 			})
 		},
-		[state.items]
+		[state.items],
 	)
 
 	const value = React.useMemo(
 		() => ({ list: state, addItem }),
-		[state, addItem]
+		[state, addItem],
 	)
 
 	return <ListContext.Provider value={value}>{children}</ListContext.Provider>
