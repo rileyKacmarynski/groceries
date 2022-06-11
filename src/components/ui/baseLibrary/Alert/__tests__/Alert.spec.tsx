@@ -40,26 +40,48 @@ describe('<Alert />', () => {
 	}
 
 	const createAlert = async () => {
-		const button = screen.getByRole('button')
+		const button = screen.getByText(/create alert/i)
 		await userEvent.click(button)
 	}
 
 	it('shows an alert when the alert method is called', async () => {
 		customRender()
-		createAlert()
+		await createAlert()
 
 		expect(await screen.findByText(/title/i)).toBeInTheDocument()
 	})
 
-	it('allows you to add multiple alerts', () => {
-		expect(false).toBeTruthy()
+	it('allows you to add multiple alerts', async () => {
+		customRender()
+		await createAlert()
+		await createAlert()
+
+		expect(screen.getAllByText(/title/i)).toHaveLength(2)
 	})
 
-	it('calls the supplied action function', () => {
-		expect(false).toBeTruthy()
+	it('calls the supplied action function', async () => {
+		const actionFn = vi.fn()
+		const actionText = 'Action'
+		customRender({
+			action: {
+				actionFn,
+				actionText,
+				altActionText: 'Alt',
+			},
+		})
+		await createAlert()
+
+		await userEvent.click(screen.getByText(/action/i))
+
+		expect(actionFn).toHaveBeenCalled()
 	})
 
-	it('closes when the close button is clicked', () => {
-		expect(false).toBeTruthy()
+	it('closes when the close button is clicked', async () => {
+		customRender()
+		await createAlert()
+
+		await userEvent.click(screen.getByLabelText(/close/i))
+
+		expect(screen.queryByText(/title/i)).not.toBeInTheDocument()
 	})
 })
